@@ -6,6 +6,7 @@ import 'package:real_state/utils/app_color.dart';
 
 import '../controllers/home_page_controller.dart';
 import 'shared/bottom_nav_bar.dart';
+import 'shared/search_bar.dart';
 import 'shared/tab_widgets.dart';
 
 class HomePageView extends GetView<HomePageController> {
@@ -46,22 +47,7 @@ class HomePageView extends GetView<HomePageController> {
                 style: TextStyle(fontSize: 22,fontWeight: FontWeight.w500),
               ),
               SizedBox(height: 10,),
-              SizedBox(
-                width: 325,
-                height: 50,
-                child: TextField(
-                  decoration: InputDecoration(
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(25.0),
-                      ),
-                      filled: true,
-                      hintStyle: TextStyle(color:AppColors.primaryLabelColor),
-                      hintText: "Search",
-                      suffixIcon: Icon(Icons.bar_chart_outlined,color: AppColors.primaryLabelColor,),
-                      prefixIcon: Icon(Icons.search_outlined,color: AppColors.primaryLabelColor,),
-                      fillColor: Colors.white70),
-                ),
-              ),
+              SearchBar(),
               SizedBox(height: 20,),
               Text(
                 "Categories".toUpperCase(),
@@ -196,6 +182,8 @@ class HomePageView extends GetView<HomePageController> {
     );
   }
 }
+
+
 
 
 
