@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:real_state/utils/app_color.dart';
 import '../../controllers/home_page_controller.dart';
+import 'filter_view.dart';
 
 class SearchBar extends GetView<HomePageController>  {
 
@@ -22,25 +23,11 @@ class SearchBar extends GetView<HomePageController>  {
             suffixIcon: GestureDetector(
                 onTap: (){
                   showModalBottomSheet(
+                    backgroundColor: Colors.transparent,
                     isScrollControlled: true,
                     context: context,
                     builder: (BuildContext context) {
-                      return Container(
-                        height: 600,
-                        color: Colors.amber,
-                        child: Center(
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: <Widget>[
-                              const Text('Modal BottomSheet'),
-                              ElevatedButton(
-                                child: const Text('Close BottomSheet'),
-                                onPressed: () => Navigator.pop(context),
-                              )
-                            ],
-                          ),
-                        ),
-                      );
+                      return FilterViewDesign();
                     },
                   );
                 },
@@ -51,3 +38,4 @@ class SearchBar extends GetView<HomePageController>  {
     );
   }
 }
+
