@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -6,6 +7,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:real_state/app/modules/home_page/views/shared/search_bar.dart';
 import 'package:real_state/utils/app_color.dart';
 
+import '../../home_page/views/shared/bottom_nav_bar.dart';
 import '../controllers/filter_sheet_controller.dart';
 
 class FilterSheetView extends GetView<FilterSheetController> {
@@ -13,6 +15,7 @@ class FilterSheetView extends GetView<FilterSheetController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      bottomNavigationBar: BottomNavBar(),
       appBar: AppBar(
         iconTheme: IconThemeData(color: Colors.black),
         elevation: 0,
@@ -20,65 +23,94 @@ class FilterSheetView extends GetView<FilterSheetController> {
         title:  Text('List',style: GoogleFonts.poppins(color: AppColors.primary,fontWeight: FontWeight.w600,fontSize: 16),),
         centerTitle: true,
       ),
-      body: Column(
-        children: [
-          SearchBar(),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              TabCardList(svgIcon: "assets/svgs/filter.svg",text: "Filter",),
-              TabCardList(svgIcon: "assets/svgs/filter.svg",text: "Sort By",),
-              TabCardList(svgIcon: "assets/svgs/filter.svg",text: "Map",),
-            ],
-          ),
-          Text('16 Results Found',style: GoogleFonts.poppins(color: AppColors.primary,fontWeight: FontWeight.w500,fontSize: 16),),
-          Container(
-            height: 560,
-            width: 400,
-            child: ListView.builder(
-              itemCount: 5,
-              itemBuilder: (context,index)=>Container(
-                height:200,
-                width: 270,
-                child: Card(
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Row(
-                    //  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Container(
-                          height:150,
-                          width: 120,
-                          decoration: BoxDecoration(borderRadius: BorderRadius.circular(10),color: Colors.pink.withOpacity(0.1),),
-                        ),
-                        Column(
-                          children: [
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  "Filter".toUpperCase(),
-                                  style: GoogleFonts.poppins(
-                                      color: AppColors.primary,
-                                      fontWeight: FontWeight.w500,
-                                      fontSize: 18),
-                                ),
-                                Icon(
-                                  Icons.close,
-                                  color: AppColors.primaryLabelColor,
-                                ),
-                              ],
-                            ),
-                          ],
-                        )
+      body: Padding(
+        padding: const EdgeInsets.all(10.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            SearchBar(),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                TabCardList(svgIcon: "assets/svgs/filter.svg",text: "Filter",),
+                TabCardList(svgIcon: "assets/svgs/filter.svg",text: "Sort By",),
+                TabCardList(svgIcon: "assets/svgs/filter.svg",text: "Map",),
+              ],
+            ),
+            Text('16 Results Found',style: GoogleFonts.poppins(color: AppColors.primary,fontWeight: FontWeight.w500,fontSize: 16),),
+            Container(
+              height: 450,
+              width: 400,
+              child: ListView.builder(
+                itemCount: 5,
+                itemBuilder: (context,index)=>Container(
+                  height:150,
+                  width: 270,
+                  child: Card(
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Container(
+                            height:120,
+                            width: 110,
+                            decoration: BoxDecoration(borderRadius: BorderRadius.circular(10),color: Colors.pink.withOpacity(0.1),),
+                          ),
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                    "Filter".toUpperCase(),
+                                    style: GoogleFonts.poppins(
+                                        color: AppColors.primary,
+                                        fontWeight: FontWeight.w500,
+                                        fontSize: 18),
+                                  ),
+                                  SizedBox(width: 110,),
+                                  SvgPicture.asset("assets/svgs/heart.svg",color: AppColors.primaryLabelColor),
 
-                      ],
+                                ],
+                              ),
+                              Row(
+                                children: [
+                                  Icon(Icons.location_on_outlined,color: AppColors.primaryLabelColor),
+                                  Text("New York, USA",style: TextStyle(color: AppColors.primaryLabelColor),)
+                                ],
+                              ),
+                              Row(
+                                children: [
+                                  Icon(Icons.location_on_outlined,color: AppColors.primaryIconColor),
+                                  SizedBox(width: 5,),
+                                  Text("170 m",style: TextStyle(color: AppColors.primaryLabelColor),),
+                                  SizedBox(width: 15,),
+                                  Icon(Icons.bathtub_outlined,color: AppColors.primaryIconColor),
+                                  SizedBox(width: 5,),
+                                  Text("2 bathrooms",style: TextStyle(color: AppColors.primaryLabelColor),),
+                                ],
+                              ),
+                              Row(
+                                children: [
+                                  Text("\$2100",style: GoogleFonts.poppins(color: AppColors.secondary,fontSize: 16,fontWeight: FontWeight.w400),),
+                                  Text("/month",style: GoogleFonts.poppins(color: AppColors.primaryLabelColor,fontSize: 16),)
+                                ],
+                              ),
+                            ],
+                          )
+
+                        ],
+                      ),
                     ),
                   ),
-                ),
-              ),),
-          ),
-        ],
+                ),),
+            ),
+          ],
+        ),
       ),
     );
   }
