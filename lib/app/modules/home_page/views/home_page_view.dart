@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
+import 'package:real_state/app/routes/app_pages.dart';
 import 'package:real_state/utils/app_color.dart';
 
 import '../controllers/home_page_controller.dart';
@@ -49,9 +50,14 @@ class HomePageView extends GetView<HomePageController> {
               SizedBox(height: 10,),
               SearchBar(),
               SizedBox(height: 20,),
-              Text(
-                "Categories".toUpperCase(),
-                style: TextStyle(fontSize: 20,fontWeight: FontWeight.w500),
+              GestureDetector(
+                onTap: (){
+                  Get.toNamed(Routes.FILTER_SHEET);
+                },
+                child: Text(
+                  "Categories".toUpperCase(),
+                  style: TextStyle(fontSize: 20,fontWeight: FontWeight.w500),
+                ),
               ),
               SizedBox(height: 20,),
               ///Tabs View
