@@ -75,7 +75,7 @@ class FilterViewDesign extends GetView<HomePageController> {
                       color: AppColors.primary),
                 ),
                 Text(
-                  "\$${controller.startValue.value} - \$${controller.endValue.value}",
+                  "\$${controller.startValue.value.toInt()} - \$${controller.endValue.value.toInt()}",
                   style: GoogleFonts.poppins(
                       fontSize: 16,
                       fontWeight: FontWeight.w400,
@@ -105,12 +105,16 @@ class FilterViewDesign extends GetView<HomePageController> {
                       fontWeight: FontWeight.w500,
                       color: AppColors.primary),
                 ),
-                Text(
-                  "\$${150}m - \$${250}m",
-                  style: GoogleFonts.poppins(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w400,
-                      color: AppColors.secondary),
+                Obx(
+                   () {
+                    return Text(
+                      "\$${controller.startValue.value.toInt()}m - \$${controller.endValue.value.toInt()}m",
+                      style: GoogleFonts.poppins(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w400,
+                          color: AppColors.secondary),
+                    );
+                  }
                 )
               ],
             ),
@@ -120,8 +124,15 @@ class FilterViewDesign extends GetView<HomePageController> {
                 activeColor: AppColors.secondary,
                 inactiveColor: AppColors.primaryLabelColor,
                 child: Container(),
-                onChanged: (value) {},
-                initialValues: SfRangeValues(3, 5),
+                onChanged: (value) {
+                  controller.startValue.value = value.start as double;
+                  controller.endValue.value = value.end as double;
+
+                    //value = SfRangeValues(controller.startValue.value , controller.endValue.value);
+                  //print("Start ${value.start} | end : ${value.end}");
+                  print("Start ${controller.startValue.value.toInt()} | end : ${controller.endValue.value.toInt()}");
+                },
+                initialValues: SfRangeValues(controller.startValue.value, controller.endValue.value),
                 min: 2,
                 max: 10,
               ),

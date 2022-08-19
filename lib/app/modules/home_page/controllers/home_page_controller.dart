@@ -8,8 +8,8 @@ class HomePageController extends GetxController {
   final bathRoomCount = 0.obs;
   final isSelected = 1.obs;
   final isBottomIconSelected = 1.obs;
-   final startValue = 2500.obs;
-   final endValue = 3500.obs;
+   final startValue = 3.0.obs;
+   final endValue = 5.0.obs;
 
   @override
   void onInit() {

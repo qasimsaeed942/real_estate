@@ -110,7 +110,9 @@ class HomePageView extends GetView<HomePageController> {
                     "Properties Nearby".toUpperCase(),
                     style: TextStyle(fontSize: 20,fontWeight: FontWeight.w500,color: AppColors.primary),
                   ),
-                  TextButton(onPressed: (){},
+                  TextButton(onPressed: (){
+                    Get.toNamed(Routes.PROPERTIES_DETAILS);
+                  },
                       child: Text("View All",style: TextStyle(fontSize: 15,fontWeight: FontWeight.w400,color: AppColors.primary),))
                 ],
               ),
