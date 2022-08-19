@@ -4,6 +4,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:real_state/app/modules/filter_sheet/views/shared/iconandtext.dart';
+import 'package:real_state/app/modules/filter_sheet/views/shared/tabcardlist.dart';
 import 'package:real_state/app/modules/home_page/views/shared/search_bar.dart';
 import 'package:real_state/utils/app_color.dart';
 
@@ -85,15 +87,12 @@ class FilterSheetView extends GetView<FilterSheetController> {
                               ),
                               Row(
                                 children: [
-                                  Icon(Icons.location_on_outlined,color: AppColors.primaryIconColor),
-                                  SizedBox(width: 5,),
-                                  Text("170 m",style: TextStyle(color: AppColors.primaryLabelColor),),
-                                  SizedBox(width: 15,),
-                                  Icon(Icons.bathtub_outlined,color: AppColors.primaryIconColor),
-                                  SizedBox(width: 5,),
-                                  Text("2 bathrooms",style: TextStyle(color: AppColors.primaryLabelColor),),
+                                  IconAndText(text: "165 m",svgPicture: "assets/svgs/box.svg"),
+                                  SizedBox(width: 10,),
+                                  IconAndText(text: "2 bathrooms",svgPicture: "assets/svgs/bath.svg"),
                                 ],
                               ),
+
                               Row(
                                 children: [
                                   Text("\$2100",style: GoogleFonts.poppins(color: AppColors.secondary,fontSize: 16,fontWeight: FontWeight.w400),),
@@ -116,29 +115,4 @@ class FilterSheetView extends GetView<FilterSheetController> {
   }
 }
 
-class TabCardList extends StatelessWidget {
 
-  final String svgIcon;
-  final String text;
-  const TabCardList({
-    Key? key, required this.svgIcon, required this.text,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: 50,
-      width: 110,
-      child: Card(
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            SvgPicture.asset(svgIcon),
-            Text(text,style: GoogleFonts.poppins(color: AppColors.primaryLabelColor),),
-          ],
-        ),
-      ),
-    );
-  }
-}
